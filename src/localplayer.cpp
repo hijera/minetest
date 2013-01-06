@@ -96,13 +96,14 @@ void LocalPlayer::move(f32 dtime, Map &map, f32 pos_max_d,
 		// If in water, the threshold of coming out is at higher y
 		if(in_water)
 		{
-			v3s16 pp = floatToInt(position + v3f(0,BS*0.1,0), BS);
+			v3s16 pp = floatToInt(position + v3f(0,BS*0.1,0),BS);
 			in_water = nodemgr->get(map.getNode(pp).getContent()).isLiquid();
+			in_water_speed = nodemgr->get(map.getNode(pp).getContent()).nodeMovingSpeed();
 		}
 		// If not in water, the threshold of going in is at lower y
 		else
 		{
-			v3s16 pp = floatToInt(position + v3f(0,BS*0.5,0), BS);
+			v3s16 pp = floatToInt(position + v3f(0,BS*0.5,0),BS);
 			in_water = nodemgr->get(map.getNode(pp).getContent()).isLiquid();
 		}
 	}
@@ -117,6 +118,7 @@ void LocalPlayer::move(f32 dtime, Map &map, f32 pos_max_d,
 	try{
 		v3s16 pp = floatToInt(position + v3f(0,0,0), BS);
 		in_water_stable = nodemgr->get(map.getNode(pp).getContent()).isLiquid();
+		in_water_speed = nodemgr->get(map.getNode(pp).getContent()).nodeMovingSpeed();
 	}
 	catch(InvalidPositionException &e)
 	{

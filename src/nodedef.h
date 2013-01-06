@@ -214,6 +214,8 @@ struct ContentFeatures
 	// Amount of light the node emits
 	u8 light_source;
 	u32 damage_per_second;
+	//Moving speed of any node
+	u32 node_moving_speed;
 	NodeBox node_box;
 	NodeBox selection_box;
 	// Compatibility with old maps
@@ -244,6 +246,9 @@ struct ContentFeatures
 	*/
 	bool isLiquid() const{
 		return (liquid_type != LIQUID_NONE);
+	}
+	f32 nodeMovingSpeed() const{	//Check moving speed
+		return node_moving_speed;
 	}
 	bool sameLiquid(const ContentFeatures &f) const{
 		if(!isLiquid() || !f.isLiquid()) return false;
