@@ -1264,7 +1264,9 @@ static ContentFeatures read_content_features(lua_State *L, int index)
 			"light_source", f.light_source);
 	f.damage_per_second = getintfield_default(L, index,
 			"damage_per_second", f.damage_per_second);
-	
+	//Its for player speed of/in any node
+	f.node_moving_speed = getintfield_default(L, index,
+			 "node_moving_speed",f.node_moving_speed);
 	lua_getfield(L, index, "node_box");
 	if(lua_istable(L, -1))
 		f.node_box = read_nodebox(L, -1);

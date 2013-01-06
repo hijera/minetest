@@ -206,6 +206,7 @@ void ContentFeatures::reset()
 	liquid_renewable = true;
 	light_source = 0;
 	damage_per_second = 0;
+	node_moving_speed = 2.5;
 	node_box = NodeBox();
 	selection_box = NodeBox();
 	legacy_facedir_simple = false;
@@ -262,6 +263,7 @@ void ContentFeatures::serialize(std::ostream &os, u16 protocol_version)
 	writeU8(os, liquid_renewable);
 	writeU8(os, light_source);
 	writeU32(os, damage_per_second);
+	writeU32(os, node_moving_speed);
 	node_box.serialize(os);
 	selection_box.serialize(os);
 	writeU8(os, legacy_facedir_simple);
@@ -322,6 +324,7 @@ void ContentFeatures::deSerialize(std::istream &is)
 	liquid_renewable = readU8(is);
 	light_source = readU8(is);
 	damage_per_second = readU32(is);
+	node_moving_speed = readU32(is);
 	node_box.deSerialize(is);
 	selection_box.deSerialize(is);
 	legacy_facedir_simple = readU8(is);
@@ -830,6 +833,7 @@ void ContentFeatures::serializeOld(std::ostream &os, u16 protocol_version)
 		writeU8(os, liquid_viscosity);
 		writeU8(os, light_source);
 		writeU32(os, damage_per_second);
+		writeU32(os, node_moving_speed);
 		node_box.serialize(os);
 		selection_box.serialize(os);
 		writeU8(os, legacy_facedir_simple);
@@ -888,6 +892,7 @@ void ContentFeatures::deSerializeOld(std::istream &is, int version)
 		liquid_viscosity = readU8(is);
 		light_source = readU8(is);
 		damage_per_second = readU32(is);
+		node_moving_speed = readU32(is);
 		node_box.deSerialize(is);
 		selection_box.deSerialize(is);
 		legacy_facedir_simple = readU8(is);

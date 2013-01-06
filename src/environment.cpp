@@ -2067,7 +2067,7 @@ void ClientEnvironment::step(float dtime)
 					f32 max_down = 2.0*BS;
 					if(speed.Y < -max_down) speed.Y = -max_down;
 
-					f32 max = 2.5*BS;
+					f32 max =lplayer->in_water_speed*BS;//Using in_water_speed instead of static value
 					if(speed.getLength() > max)
 					{
 						speed = speed / speed.getLength() * max;
