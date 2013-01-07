@@ -203,7 +203,7 @@ public:
 	bool swimming_up;
 	bool camera_barely_in_ceiling;
 
-	u32 in_water_speed;
+	f32 in_water_speed;
 	u8 light;
 
 	Inventory inventory;

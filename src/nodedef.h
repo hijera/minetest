@@ -215,7 +215,7 @@ struct ContentFeatures
 	u8 light_source;
 	u32 damage_per_second;
 	//Moving speed of any node
-	u32 node_moving_speed;
+	f32 node_moving_speed;
 	NodeBox node_box;
 	NodeBox selection_box;
 	// Compatibility with old maps
